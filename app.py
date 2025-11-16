@@ -138,8 +138,3 @@ elif menu == "Predict Stress Level":
         features = np.array([[age, sleep_hours, social_interaction, work_stress, physical_activity, mood_score]])
         prediction = model.predict(features)[0]
         st.success(f"Predicted Stress Level: {prediction}")
-
-    if st.button("Predict"):
-        features = np.array([[age, sleep_hours, social_interaction, work_stress, physical_activity, mood_score]])
-        prediction = model.predict(features)[0]
-        st.success(f"Predicted Stress Level: {prediction}")
