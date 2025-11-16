@@ -57,7 +57,9 @@ menu = st.sidebar.selectbox(
 if menu == "Dataset Overview":
     st.header("Dataset Overview")
     st.dataframe(data.head())
+    st.header("Summary of Data")
     st.dataframe(data.describe())
+    st.header("stress_level")
     st.bar_chart(data["stress_level"].value_counts())
 
 elif menu == "Visualizations":
@@ -131,6 +133,11 @@ elif menu == "Predict Stress Level":
     work_stress = st.slider('Work/Study Stress', 1, 10, 5)
     physical_activity = st.slider('Physical Activity', 0, 6, 2)
     mood_score = st.slider('Mood Score', 1, 10, 6)
+
+    if st.button("Predict"):
+        features = np.array([[age, sleep_hours, social_interaction, work_stress, physical_activity, mood_score]])
+        prediction = model.predict(features)[0]
+        st.success(f"Predicted Stress Level: {prediction}")
 
     if st.button("Predict"):
         features = np.array([[age, sleep_hours, social_interaction, work_stress, physical_activity, mood_score]])
